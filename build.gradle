@@ -1,0 +1,36 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.8.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+processResources.destinationDir = compileJava.destinationDir
+compileJava.dependsOn processResources
+
+idea.module.outputDir = compileJava.destinationDir
+
+group = 'com.hainet'
+version = '1.0.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter')
+
+    compile('com.h2database:h2:1.4.196')
+    compile('org.seasar.doma.boot:doma-spring-boot-starter:1.1.1')
+}
