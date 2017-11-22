@@ -1,6 +1,6 @@
-package com.hainet.doma.spring.boot.sample.dao;
+package com.hainet.doma.spring.boot.sample.domain.dao;
 
-import com.hainet.doma.spring.boot.sample.entity.Person;
+import com.hainet.doma.spring.boot.sample.domain.entity.Person;
 import org.seasar.doma.Dao;
 import org.seasar.doma.Select;
 import org.seasar.doma.boot.ConfigAutowireable;
