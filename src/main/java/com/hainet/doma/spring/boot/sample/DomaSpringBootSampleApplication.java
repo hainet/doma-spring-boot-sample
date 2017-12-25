@@ -21,7 +21,7 @@ public class DomaSpringBootSampleApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         personDao.findAll().forEach(System.out::println);
         model1Dao.findAll().forEach(System.out::println);
         model2Dao.findAll().forEach(System.out::println);
