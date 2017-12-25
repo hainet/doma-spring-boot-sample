@@ -5,6 +5,7 @@ import com.hainet.doma.spring.boot.sample.config.annotation.DataSource2;
 import org.seasar.doma.boot.autoconfigure.DomaConfig;
 import org.seasar.doma.boot.autoconfigure.DomaConfigBuilder;
 import org.seasar.doma.boot.autoconfigure.DomaProperties;
+import org.seasar.doma.jdbc.EntityListenerProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -56,7 +57,8 @@ public class DataSourceConfig {
                         .dataSource(dataSource())
                         .dialect(domaProperties.getDialect().create())
                         .sqlFileRepository(domaProperties.getSqlFileRepository().create())
-                        .naming(domaProperties.getNaming().naming()),
+                        .naming(domaProperties.getNaming().naming())
+                        .entityListenerProvider(new EntityListenerProvider() {}),
                 domaProperties);
     }
 
@@ -70,7 +72,8 @@ public class DataSourceConfig {
                         .dataSource(dataSource1())
                         .dialect(domaProperties.getDialect().create())
                         .sqlFileRepository(domaProperties.getSqlFileRepository().create())
-                        .naming(domaProperties.getNaming().naming()),
+                        .naming(domaProperties.getNaming().naming())
+                        .entityListenerProvider(new EntityListenerProvider() {}),
                 domaProperties);
     }
 
@@ -82,7 +85,8 @@ public class DataSourceConfig {
                         .dataSource(dataSource2())
                         .dialect(domaProperties.getDialect().create())
                         .sqlFileRepository(domaProperties.getSqlFileRepository().create())
-                        .naming(domaProperties.getNaming().naming()),
+                        .naming(domaProperties.getNaming().naming())
+                        .entityListenerProvider(new EntityListenerProvider() {}),
                 domaProperties);
     }
 }
