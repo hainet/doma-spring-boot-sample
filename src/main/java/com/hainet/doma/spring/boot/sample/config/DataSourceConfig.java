@@ -65,8 +65,6 @@ public class DataSourceConfig {
     @Bean
     @DataSource1
     public DomaConfig config1(final DomaProperties domaProperties) {
-        System.out.println(domaProperties);
-
         return new DomaConfig(
                 new DomaConfigBuilder()
                         .dataSource(dataSource1())
