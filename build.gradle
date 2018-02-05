@@ -11,12 +11,19 @@ buildscript {
 }
 
 apply plugin: 'java'
+// for IntelliJ IDEA
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
+// resources以下のファイルをJavaの出力先と同じディレクトリに配置する。
 processResources.destinationDir = compileJava.destinationDir
+// Javaのコンパイルを生成されたファイルに依存して行う。
 compileJava.dependsOn processResources
 
+// for IntelliJ IDEA
+// DomaはSQLファイルを/out/production/classesから検出する。
+// IntelliJ IDEAはresources以下のファイルを/out/production/resourcesに配置するため、SQLファイルが検出されない。
+// そのため、モジュールの出力先をJavaの出力先に変更する。
 idea.module.outputDir = compileJava.destinationDir
 
 group = 'com.hainet'
