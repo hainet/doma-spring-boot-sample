@@ -1,1 +1,1 @@
-INSERT INTO model2 (id) VALUES (null);
+INSERT INTO model2 (id) VALUES (NULL);

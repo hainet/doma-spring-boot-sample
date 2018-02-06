@@ -38,6 +38,8 @@ repositories {
 dependencies {
     compile('org.springframework.boot:spring-boot-starter')
 
+    testCompile('org.springframework.boot:spring-boot-starter-test:1.5.10.RELEASE')
+
     compile('com.h2database:h2:1.4.196')
     compile('org.seasar.doma.boot:doma-spring-boot-starter:1.1.1')
 

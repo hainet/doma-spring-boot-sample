@@ -58,7 +58,8 @@ public class DataSourceConfig {
                         .dialect(domaProperties.getDialect().create())
                         .sqlFileRepository(domaProperties.getSqlFileRepository().create())
                         .naming(domaProperties.getNaming().naming())
-                        .entityListenerProvider(new EntityListenerProvider() {}),
+                        .entityListenerProvider(new EntityListenerProvider() {
+                        }),
                 domaProperties);
     }
 
@@ -71,7 +72,8 @@ public class DataSourceConfig {
                         .dialect(domaProperties.getDialect().create())
                         .sqlFileRepository(domaProperties.getSqlFileRepository().create())
                         .naming(domaProperties.getNaming().naming())
-                        .entityListenerProvider(new EntityListenerProvider() {}),
+                        .entityListenerProvider(new EntityListenerProvider() {
+                        }),
                 domaProperties);
     }
 
@@ -84,7 +86,8 @@ public class DataSourceConfig {
                         .dialect(domaProperties.getDialect().create())
                         .sqlFileRepository(domaProperties.getSqlFileRepository().create())
                         .naming(domaProperties.getNaming().naming())
-                        .entityListenerProvider(new EntityListenerProvider() {}),
+                        .entityListenerProvider(new EntityListenerProvider() {
+                        }),
                 domaProperties);
     }
 }
