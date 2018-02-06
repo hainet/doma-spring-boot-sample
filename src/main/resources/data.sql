@@ -1,1 +1,1 @@
-INSERT INTO person (name) VALUES ('hainet');
+INSERT INTO person (name, status) VALUES ('hainet', 0);
