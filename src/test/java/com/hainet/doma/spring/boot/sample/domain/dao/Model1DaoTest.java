@@ -1,4 +1,4 @@
-package com.hainet.doma.spring.boot.sample;
+package com.hainet.doma.spring.boot.sample.domain.dao;
 
 import com.hainet.doma.spring.boot.sample.domain.dao.Model1Dao;
 import com.hainet.doma.spring.boot.sample.domain.entity.Model1;
