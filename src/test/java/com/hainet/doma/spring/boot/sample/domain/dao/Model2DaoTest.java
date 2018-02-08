@@ -1,7 +1,7 @@
 package com.hainet.doma.spring.boot.sample.domain.dao;
 
-import com.hainet.doma.spring.boot.sample.domain.dao.Model2Dao;
 import com.hainet.doma.spring.boot.sample.domain.entity.Model2;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +20,16 @@ public class Model2DaoTest {
     @Autowired
     private Model2Dao dao;
 
-    private Model2 model1;
+    private Model2 model2;
 
-    {
-        model1 = new Model2();
-        model1.setId(1);
+    @Before
+    public void before() {
+        model2 = new Model2();
+        model2.setId(1);
     }
 
     @Test
     public void findAllTest() {
-        assertThat(dao.findAll(), is(Arrays.asList(model1)));
+        assertThat(dao.findAll(), is(Arrays.asList(model2)));
     }
 }

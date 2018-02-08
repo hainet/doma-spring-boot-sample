@@ -1,7 +1,7 @@
 package com.hainet.doma.spring.boot.sample.domain.dao;
 
-import com.hainet.doma.spring.boot.sample.domain.dao.Model1Dao;
 import com.hainet.doma.spring.boot.sample.domain.entity.Model1;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,8 @@ public class Model1DaoTest {
 
     private Model1 model1;
 
-    {
+    @Before
+    public void before() {
         model1 = new Model1();
         model1.setId(1);
     }
