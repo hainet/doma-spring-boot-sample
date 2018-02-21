@@ -62,7 +62,7 @@ public class PersonDaoTest {
         dao.update(person);
 
         // Verify
-        // TODO: findById以外の方法でupdated後の値にアクセスしたい。
+        // TODO: findById以外の方法でupdated後の値にアクセスしたい。DBUnitによる改善を行う。
         final Optional<Person> person = dao.findById(1);
         assertThat(person.get(), is(this.person));
     }

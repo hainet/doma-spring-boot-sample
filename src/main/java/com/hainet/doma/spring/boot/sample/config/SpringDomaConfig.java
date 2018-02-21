@@ -2,6 +2,7 @@ package com.hainet.doma.spring.boot.sample.config;
 
 import com.hainet.doma.spring.boot.sample.config.annotation.DataSource1;
 import com.hainet.doma.spring.boot.sample.config.annotation.DataSource2;
+import org.seasar.doma.boot.autoconfigure.DomaConfig;
 import org.seasar.doma.boot.autoconfigure.DomaConfigBuilder;
 import org.seasar.doma.boot.autoconfigure.DomaProperties;
 import org.seasar.doma.jdbc.EntityListenerProvider;
@@ -16,14 +17,13 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringDomaConfig {
 
-    @Qualifier("dataSource")
     private final DataSource dataSource;
 
-    @Qualifier("dataSource1")
     private final DataSource dataSource1;
 
-    @Qualifier("dataSource2")
     private final DataSource dataSource2;
+
+    private final DomaProperties domaProperties;
 
     private final JdbcLogger jdbcLogger;
 
@@ -31,16 +31,18 @@ public class SpringDomaConfig {
             @Qualifier("dataSource") final DataSource dataSource,
             @Qualifier("dataSource1") final DataSource dataSource1,
             @Qualifier("dataSource2") final DataSource dataSource2,
+            final DomaProperties domaProperties,
             final JdbcLogger jdbcLogger) {
         this.dataSource = dataSource;
         this.dataSource1 = dataSource1;
         this.dataSource2 = dataSource2;
+        this.domaProperties = domaProperties;
         this.jdbcLogger = jdbcLogger;
     }
 
     @Bean
     @Primary
-    public org.seasar.doma.boot.autoconfigure.DomaConfig config(final DomaProperties domaProperties) {
+    public DomaConfig config() {
         return new org.seasar.doma.boot.autoconfigure.DomaConfig(
                 new DomaConfigBuilder()
                         .dataSource(dataSource)
@@ -49,12 +51,13 @@ public class SpringDomaConfig {
                         .naming(domaProperties.getNaming().naming())
                         .entityListenerProvider(new EntityListenerProvider() {
                         }),
-                domaProperties);
+                domaProperties
+        );
     }
 
     @Bean
     @DataSource1
-    public org.seasar.doma.boot.autoconfigure.DomaConfig config1(final DomaProperties domaProperties) {
+    public DomaConfig config1() {
         return new org.seasar.doma.boot.autoconfigure.DomaConfig(
                 new DomaConfigBuilder()
                         .dataSource(dataSource1)
@@ -63,12 +66,13 @@ public class SpringDomaConfig {
                         .naming(domaProperties.getNaming().naming())
                         .entityListenerProvider(new EntityListenerProvider() {
                         }),
-                domaProperties);
+                domaProperties
+        );
     }
 
     @Bean
     @DataSource2
-    public org.seasar.doma.boot.autoconfigure.DomaConfig config2(final DomaProperties domaProperties) {
+    public DomaConfig config2() {
         return new org.seasar.doma.boot.autoconfigure.DomaConfig(
                 new DomaConfigBuilder()
                         .dataSource(dataSource2)
