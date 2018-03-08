@@ -2,6 +2,7 @@ package com.hainet.doma.spring.boot.sample.config;
 
 import com.hainet.doma.spring.boot.sample.config.annotation.DataSource1;
 import com.hainet.doma.spring.boot.sample.config.annotation.DataSource2;
+import org.seasar.doma.boot.autoconfigure.DomaConfig;
 import org.seasar.doma.boot.autoconfigure.DomaConfigBuilder;
 import org.seasar.doma.boot.autoconfigure.DomaProperties;
 import org.seasar.doma.jdbc.EntityListenerProvider;
@@ -40,8 +41,8 @@ public class SpringDomaConfig {
 
     @Bean
     @Primary
-    public org.seasar.doma.boot.autoconfigure.DomaConfig config(final DomaProperties domaProperties) {
-        return new org.seasar.doma.boot.autoconfigure.DomaConfig(
+    public DomaConfig config(final DomaProperties domaProperties) {
+        return new DomaConfig(
                 new DomaConfigBuilder()
                         .dataSource(dataSource)
                         .dialect(domaProperties.getDialect().create())
@@ -54,8 +55,8 @@ public class SpringDomaConfig {
 
     @Bean
     @DataSource1
-    public org.seasar.doma.boot.autoconfigure.DomaConfig config1(final DomaProperties domaProperties) {
-        return new org.seasar.doma.boot.autoconfigure.DomaConfig(
+    public DomaConfig config1(final DomaProperties domaProperties) {
+        return new DomaConfig(
                 new DomaConfigBuilder()
                         .dataSource(dataSource1)
                         .dialect(domaProperties.getDialect().create())
@@ -68,8 +69,8 @@ public class SpringDomaConfig {
 
     @Bean
     @DataSource2
-    public org.seasar.doma.boot.autoconfigure.DomaConfig config2(final DomaProperties domaProperties) {
-        return new org.seasar.doma.boot.autoconfigure.DomaConfig(
+    public DomaConfig config2(final DomaProperties domaProperties) {
+        return new DomaConfig(
                 new DomaConfigBuilder()
                         .dataSource(dataSource2)
                         .dialect(domaProperties.getDialect().create())

@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +39,7 @@ public class PersonDaoTest {
     public void findAllTest() {
         final List<Person> people = dao.findAll();
 
-        assertThat(people, is(Arrays.asList(this.person)));
+        assertThat(people, is(Collections.singletonList(this.person)));
     }
 
     @Test
@@ -59,11 +59,11 @@ public class PersonDaoTest {
         this.person.setStatus(status);
 
         // Exercise
-        dao.update(person);
+        dao.update(this.person);
 
         // Verify
         // TODO: findById以外の方法でupdated後の値にアクセスしたい。
-        final Optional<Person> person = dao.findById(1);
-        assertThat(person.get(), is(this.person));
+        final Optional<Person> actual = dao.findById(1);
+        assertThat(actual, is(this.person));
     }
 }
