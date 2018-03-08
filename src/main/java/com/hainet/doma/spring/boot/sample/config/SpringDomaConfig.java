@@ -17,14 +17,13 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringDomaConfig {
 
-    @Qualifier("dataSource")
     private final DataSource dataSource;
 
-    @Qualifier("dataSource1")
     private final DataSource dataSource1;
 
-    @Qualifier("dataSource2")
     private final DataSource dataSource2;
+
+    private final DomaProperties domaProperties;
 
     private final JdbcLogger jdbcLogger;
 
@@ -32,10 +31,12 @@ public class SpringDomaConfig {
             @Qualifier("dataSource") final DataSource dataSource,
             @Qualifier("dataSource1") final DataSource dataSource1,
             @Qualifier("dataSource2") final DataSource dataSource2,
+            final DomaProperties domaProperties,
             final JdbcLogger jdbcLogger) {
         this.dataSource = dataSource;
         this.dataSource1 = dataSource1;
         this.dataSource2 = dataSource2;
+        this.domaProperties = domaProperties;
         this.jdbcLogger = jdbcLogger;
     }
 
@@ -50,7 +51,8 @@ public class SpringDomaConfig {
                         .naming(domaProperties.getNaming().naming())
                         .entityListenerProvider(new EntityListenerProvider() {
                         }),
-                domaProperties);
+                domaProperties
+        );
     }
 
     @Bean
@@ -64,7 +66,8 @@ public class SpringDomaConfig {
                         .naming(domaProperties.getNaming().naming())
                         .entityListenerProvider(new EntityListenerProvider() {
                         }),
-                domaProperties);
+                domaProperties
+        );
     }
 
     @Bean
