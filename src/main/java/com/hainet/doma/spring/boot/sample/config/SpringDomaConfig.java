@@ -23,66 +23,56 @@ public class SpringDomaConfig {
 
     private final DataSource dataSource2;
 
-    private final DomaProperties domaProperties;
-
     private final JdbcLogger jdbcLogger;
 
     public SpringDomaConfig(
             @Qualifier("dataSource") final DataSource dataSource,
             @Qualifier("dataSource1") final DataSource dataSource1,
             @Qualifier("dataSource2") final DataSource dataSource2,
-            final DomaProperties domaProperties,
             final JdbcLogger jdbcLogger) {
         this.dataSource = dataSource;
         this.dataSource1 = dataSource1;
         this.dataSource2 = dataSource2;
-        this.domaProperties = domaProperties;
         this.jdbcLogger = jdbcLogger;
     }
 
     @Bean
     @Primary
     public DomaConfig config(final DomaProperties domaProperties) {
-        return new DomaConfig(
-                new DomaConfigBuilder()
-                        .dataSource(dataSource)
-                        .dialect(domaProperties.getDialect().create())
-                        .sqlFileRepository(domaProperties.getSqlFileRepository().create())
-                        .naming(domaProperties.getNaming().naming())
-                        .entityListenerProvider(new EntityListenerProvider() {
-                        }),
-                domaProperties
-        );
+        return new DomaConfigBuilder()
+                .dataSource(dataSource)
+                .dialect(domaProperties.getDialect().create())
+                .sqlFileRepository(domaProperties.getSqlFileRepository().create())
+                .naming(domaProperties.getNaming().naming())
+                .entityListenerProvider(new EntityListenerProvider() {
+                })
+                .build(domaProperties);
     }
 
     @Bean
     @DataSource1
     public DomaConfig config1(final DomaProperties domaProperties) {
-        return new DomaConfig(
-                new DomaConfigBuilder()
-                        .dataSource(dataSource1)
-                        .dialect(domaProperties.getDialect().create())
-                        .sqlFileRepository(domaProperties.getSqlFileRepository().create())
-                        .naming(domaProperties.getNaming().naming())
-                        .entityListenerProvider(new EntityListenerProvider() {
-                        }),
-                domaProperties
-        );
+        return new DomaConfigBuilder()
+                .dataSource(dataSource1)
+                .dialect(domaProperties.getDialect().create())
+                .sqlFileRepository(domaProperties.getSqlFileRepository().create())
+                .naming(domaProperties.getNaming().naming())
+                .entityListenerProvider(new EntityListenerProvider() {
+                })
+                .build(domaProperties);
     }
 
     @Bean
     @DataSource2
     public DomaConfig config2(final DomaProperties domaProperties) {
-        return new DomaConfig(
-                new DomaConfigBuilder()
-                        .dataSource(dataSource2)
-                        .dialect(domaProperties.getDialect().create())
-                        .sqlFileRepository(domaProperties.getSqlFileRepository().create())
-                        .naming(domaProperties.getNaming().naming())
-                        .entityListenerProvider(new EntityListenerProvider() {
-                        })
-                        .jdbcLogger(jdbcLogger),
-                domaProperties
-        );
+        return new DomaConfigBuilder()
+                .dataSource(dataSource2)
+                .dialect(domaProperties.getDialect().create())
+                .sqlFileRepository(domaProperties.getSqlFileRepository().create())
+                .naming(domaProperties.getNaming().naming())
+                .entityListenerProvider(new EntityListenerProvider() {
+                })
+                .jdbcLogger(jdbcLogger)
+                .build(domaProperties);
     }
 }
